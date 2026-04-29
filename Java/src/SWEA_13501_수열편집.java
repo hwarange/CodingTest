@@ -19,7 +19,7 @@ class LinkedList{
 	Node head;
 	
 	public LinkedList() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	public void Insert(int idx, int val) {
