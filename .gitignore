@@ -1,1 +1,21 @@
-/.metadata/
+# 컴파일된 클래스 파일 제외
+*.class
+
+# 로그 파일 제외
+*.log
+
+# 에디터 및 IDE 설정 파일 제외 (IntelliJ, Eclipse, VS Code 등)
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# 빌드 결과물 제외
+bin/
+build/
+out/
+target/
+
+.metadata/
