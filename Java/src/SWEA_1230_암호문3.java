@@ -28,7 +28,7 @@ public class SWEA_1230_암호문3 {
 
 		public void insert (int idx, int cnt, LinkedList list) {
 			
-			if(head == tail || head == null ) {
+			if(head == null) {
 				head = list.head;
 				tail = list.tail;
 				size = cnt;
@@ -48,26 +48,40 @@ public class SWEA_1230_암호문3 {
 		
 		public void delete (int idx, int cnt) {
 			
-			Node curr = head;
-			
-			//idx까지 이동
 			if(size < idx) return;
 			
+			Node curr = head;
+			boolean no = false;
 			for(int i=0; i<idx; i++) {
-				if(curr.next == null) break;
+				if(curr.next == null) {
+					no = true;
+					break;
+				}
 				curr = curr.next;
 			}
+			
+			if(no) return;
 			
 			Node tmp = curr;
 			
+			int count = 0;
 			for(int i=0; i<cnt; i++) {
 				if(curr.next == null) break;
+				count++;
 				curr = curr.next;
 			}
 			
-			tmp.next = curr;
-			tail = curr;
-			size -= cnt; 
+			if(cnt == count) {
+				tmp.next = curr;
+				tail = tmp.next;
+				size -= cnt;
+			}
+			
+			else {
+				size -= count;
+				tmp.next = curr;
+				tail = tmp.next;
+			}
 			
 		}
 		
