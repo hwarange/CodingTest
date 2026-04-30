@@ -35,53 +35,64 @@ public class SWEA_1230_암호문3 {
 				return;
 			}
 			
+			if(idx == 0) {
+				list.tail.next = head;
+				head = list.head;
+				size += cnt;
+				return;
+			}
+			
 			Node curr = head;
-			for(int i=0; i<idx; i++) {
-				if(curr.next == null) break;
+			for(int i=1; i<idx; i++) {
+				if(curr.next == null)break;
 				curr = curr.next;
 			}
 			
+			
+			Node tmp = curr.next;
 			curr.next = list.head;
-			tail = list.tail;
-			size += cnt;
+			list.tail.next = tmp;
+			
+			if(tmp == null) tail = list.tail;
+		    size += cnt;
 		}
 		
 		public void delete (int idx, int cnt) {
 			
-			if(size < idx) return;
+			if(size <= idx || head == null) return;
+			
+			if(idx == 0) {
+				Node curr = head;
+				for(int i=0; i<cnt; i++) {
+					if(curr.next == null)break;
+					curr = curr.next;
+				}
+				
+				head = curr.next;
+				size -= cnt;
+				return;
+			}
 			
 			Node curr = head;
-			boolean no = false;
 			for(int i=0; i<idx; i++) {
-				if(curr.next == null) {
-					no = true;
-					break;
-				}
+				if(curr.next == null) break;
+				
 				curr = curr.next;
 			}
-			
-			if(no) return;
-			
-			Node tmp = curr;
 			
 			int count = 0;
+			Node tmp = curr;
 			for(int i=0; i<cnt; i++) {
-				if(curr.next == null) break;
-				count++;
+				if(curr.next == null)break;
 				curr = curr.next;
+				count++;
 			}
 			
-			if(cnt == count) {
-				tmp.next = curr;
-				tail = tmp.next;
-				size -= cnt;
-			}
+			if(count < cnt) tail = tmp;
+			else tmp.next = curr.next;
 			
-			else {
-				size -= count;
-				tmp.next = curr;
-				tail = tmp.next;
-			}
+			size -= count;
+			
 			
 		}
 		
@@ -101,8 +112,7 @@ public class SWEA_1230_암호문3 {
 		
 		
 		public void add (int cnt, LinkedList list) {
-			Node tmp = tail;
-			tmp.next = list.head;
+			tail.next = list.head;
 			tail = list.tail;
 			
 			size += cnt;
@@ -116,7 +126,7 @@ public class SWEA_1230_암호문3 {
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer st;
 		
-		for(int tc=1; tc<=1; tc++) {
+		for(int tc=1; tc<=10; tc++) {
 			sb.append("#").append(tc).append(" ");
 			
 			int N = Integer.parseInt(br.readLine());
@@ -159,12 +169,13 @@ public class SWEA_1230_암호문3 {
 					int y = Integer.parseInt(st.nextToken());
 					
 					LinkedList tmp = new LinkedList();
+					
 					for(int j=0; j<y; j++) {
 						int code = Integer.parseInt(st.nextToken());
 						tmp.addLast(code);
 					}
 					
-					list.add(y, list);
+					list.add(y, tmp);
 				}
 			}
 			
