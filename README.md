@@ -1,6 +1,7 @@
 # CodingTest
 
 ## JAVA 위주로 문제를 풀었습니다!
+## 되도록 하루 한 문제를 풀기!!!
 
 SW Expert Academy : [SWEA](https://swexpertacademy.com/main/main.do)
 
