@@ -30,7 +30,7 @@ public class SWEA_3280_01Knapsack {
 			for(int i=0; i<N; i++) {
 				for(int j=0; j<N; j++) {
 					int w = items[i][1];
-					if(w > K)
+					if(w > K) {};
 				}
 			}
 			
