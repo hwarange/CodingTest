@@ -17,20 +17,27 @@ public class SWEA_3280_01Knapsack {
 			int N = Integer.parseInt(st.nextToken());
 			int K = Integer.parseInt(st.nextToken());
 			
-			int[][] items = new int[N][2];
+			int[] W = new int[N+1];
+			int[] V = new int[N+1];
 			
-			int max = 0;
+			//첫번째 행은 믈건
+			//두번째 행은 무게
+			int[][] dp = new int[N+1][K+1];
 			
-			for(int i=0; i<N; i++) {
+			
+			for(int i=1; i<=N; i++) {
 				st = new StringTokenizer(br.readLine());
-				items[i][0] = Integer.parseInt(st.nextToken());
-				items[i][1] = Integer.parseInt(st.nextToken());
+				//부피
+				W[i] = Integer.parseInt(st.nextToken());
+				//가치
+				V[i] = Integer.parseInt(st.nextToken());
 			}
 			
-			for(int i=0; i<N; i++) {
-				for(int j=0; j<N; j++) {
-					int w = items[i][1];
-					if(w > K) {};
+			//물건 i번부터 N번까지
+			for(int i=1; i<=N; i++) {
+				for(int j=1; j<=K; j++) {
+					if(W[i] > j) dp[i][j] = dp[i-1][j];
+					else dp[i][j] = Math.max(dp[i-1][j-W[i]]+V[i], dp[i-1][j]);
 				}
 			}
 			
