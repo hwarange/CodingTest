@@ -41,7 +41,8 @@ public class SWEA_3280_01Knapsack {
 				}
 			}
 			
-			
+			sb.append(dp[N][K]).append("\n");
 		}
+		System.out.print(sb);
 	}
 }
