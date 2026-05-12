@@ -12,8 +12,7 @@ public class SWEA_2930_힙 {
 		
 		int t = Integer.parseInt(br.readLine());
 		for(int tc=1; tc<=t; tc++) {
-//			sb.append("#").append(tc).append(" ");
-			System.out.print("#"+tc+" ");
+			sb.append("#").append(tc).append(" ");
 			
 			int n = Integer.parseInt(br.readLine());
 			
@@ -30,19 +29,15 @@ public class SWEA_2930_힙 {
 				}
 				
 				if(!pq.isEmpty()) {
-//					sb.append(pq.poll()).append(" ");
-					System.out.print(pq.poll()+" ");
+					sb.append(pq.poll()).append(" ");
 				}
 				else {
-//					sb.append(-1).append(" ");
-					System.out.print(-1+" ");
-					break;
+					sb.append(-1).append(" ");
 				}
 				
 			}
-//			sb.deleteCharAt(sb.length()-1).append("\n");
-			System.out.println();
+			sb.deleteCharAt(sb.length()-1).append("\n");
 		}
-//		System.out.print(sb);
+		System.out.print(sb);
 	}
 }

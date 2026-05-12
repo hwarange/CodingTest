@@ -30,15 +30,20 @@ public class SWEA_7701_염라대왕의이름정렬 {
 			
 			dict.sort((o1, o2) -> {
 				if(o1.length() == o2.length()) {
-					for(int i=0; i<o1.length(); i++) {
-						if(o1.charAt(i) != o2.charAt(i)) {
-							return o1.charAt(i) - o2.charAt(i);
-						}
-					}
+//					for(int i=0; i<o1.length(); i++) {
+//						if(o1.charAt(i) != o2.charAt(i)) {
+//							return o1.charAt(i) - o2.charAt(i);
+//						}
+//					}
+					
+					//자바에 내장되어있는 String.compareTo를 사용하면 사전순으로 정렬을 해줌
+					return o1.compareTo(o2);
 
 				}
 				
-				return o1.length() - o2.length();
+				//정수 오버플로우 방지
+				//두 정수 대소여부만 알려줌
+				return Integer.compare(o1.length(), o2.length());
 			});			
 			
 			for(String s: dict) {
