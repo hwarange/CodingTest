@@ -4,6 +4,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+
+// 보완할 점을 생각해보자
+// 폭탄터지는 것도 생각해보자
 public class SWEA_1868_파핑파핑지뢰찾기 {
 	
 	//상하좌우, 좌상 좌하, 우상 우하
