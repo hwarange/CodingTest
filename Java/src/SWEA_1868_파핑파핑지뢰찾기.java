@@ -5,8 +5,6 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 
-// 보완할 점을 생각해보자
-// 폭탄터지는 것도 생각해보자
 public class SWEA_1868_파핑파핑지뢰찾기 {
 	
 	//상하좌우, 좌상 좌하, 우상 우하
@@ -81,13 +79,15 @@ public class SWEA_1868_파핑파핑지뢰찾기 {
 			int r = q.poll();
 			int c = q.poll();
 			
+			if(!noMine(r, c)) continue;
+			
 			for(int d=0; d<8; d++) {
 				int ny = r + dy[d];
 				int nx = c + dx[d];
 				
 				if(indexOutOf(ny, nx)) continue;
 				
-				if(!visited[ny][nx] && map[ny][nx] == '.' && noMine(ny, nx)) {
+				if(!visited[ny][nx] && map[ny][nx] == '.') {
 					q.add(ny);
 					q.add(nx);
 					visited[ny][nx] = true;
@@ -107,6 +107,7 @@ public class SWEA_1868_파핑파핑지뢰찾기 {
 			if(map[ny][nx] == '*') {
 				return false;
 			}
+
 			
 		}
 		return true;
