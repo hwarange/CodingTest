@@ -1,5 +1,12 @@
 import java.util.Arrays;
 
+
+/*
+ 차이 배열을 이용해서 풀기
+ 1차원 차이배열 => diff[N+1], start_idx 에만 +, end_idx+1한 곳에는 -1
+ 2차원 차이배열 => diff[N+1], start_idx_row/col, row+1/col+1 ++, row/col+1, row+1/col -- 적용
+ */
+
 public class PRO_kakao_파괴되지않은건물 {
 	public static int solution(int[][] board, int[][] skill) {
         int answer = 0;
