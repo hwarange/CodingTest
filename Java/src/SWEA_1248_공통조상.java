@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class SWEA_1248_공통조상 {	
@@ -32,8 +35,41 @@ public class SWEA_1248_공통조상 {
 				graph[p][s] = graph[s][p] = 1;
 			}
 			
+			List<Integer> num1List = new ArrayList<>();
+			List<Integer> num2List = new ArrayList<>();
+			
+			PriorityQueue<Integer> pq = new PriorityQueue<>();
+			pq.add(num1);
+			
+			while(pq.isEmpty()) {
+				int root = pq.poll();
+				
+				num1List.add(root);
+				if(root == 1) break;
+				
+				for(int i=1; i<V+1; i++) {
+					if(graph[root][i] == 1) {
+						pq.add(i);
+					} 
+				}
+			}
+			pq.clear();
+			
+			while(pq.isEmpty()) {
+				int root = pq.poll();
+				
+				num2List.add(root);
+				if(root == 1) break;
+				
+				for(int i=1; i<V+1; i++) {
+					if(graph[root][i] == 1) {
+						pq.add(i);
+					} 
+				}
+			}
+			
+			int max = 0;
 		}
 	}
-	
-	static void 
+
 }
