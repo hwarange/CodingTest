@@ -9,8 +9,5 @@ public class SWEA_1461_프로세서연결하기 {
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer st;
 		
-		/////ssdsdsdsd
-		/// 
-		/// sss
 	}
 }
