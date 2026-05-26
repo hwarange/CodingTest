@@ -1,12 +1,18 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class SWEA_1248_공통조상 {	
+	
+	static List<Integer>[] children;
+	static int[] parent;
+	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
@@ -24,51 +30,39 @@ public class SWEA_1248_공통조상 {
 			int num1 = Integer.parseInt(st.nextToken());
 			int num2 = Integer.parseInt(st.nextToken());
 			
-			int[][] graph = new int[V+1][V+1];
-			boolean[][] visited = new boolean[V+1][V+1];
+			parent = new int[V+1];
+			children = new ArrayList[V+1];
+			for(int i=0; i<V+1; i++) {
+				children[i] = new ArrayList<>();
+			}
 			
 			st = new StringTokenizer(br.readLine());
 			for(int i=0; i<E; i++) {
-				int p = Integer.parseInt(st.nextToken()); 
-				int s = Integer.parseInt(st.nextToken());
+				int p = Integer.parseInt(st.nextToken());
+				int c = Integer.parseInt(st.nextToken());
 				
-				graph[p][s] = graph[s][p] = 1;
+				//부모 배열에서 자식을 idx로 해당하는 부모를 넣어줌
+				parent[c] = p;
+				
+				//자식 리스트에서 부모를 idx로 해당하는 자식들을 넣어줌
+				children[p].add(c);
 			}
 			
-			List<Integer> num1List = new ArrayList<>();
-			List<Integer> num2List = new ArrayList<>();
-			
-			PriorityQueue<Integer> pq = new PriorityQueue<>();
-			pq.add(num1);
-			
-			while(pq.isEmpty()) {
-				int root = pq.poll();
-				
-				num1List.add(root);
-				if(root == 1) break;
-				
-				for(int i=1; i<V+1; i++) {
-					if(graph[root][i] == 1) {
-						pq.add(i);
-					} 
-				}
-			}
-			pq.clear();
-			
-			while(pq.isEmpty()) {
-				int root = pq.poll();
-				
-				num2List.add(root);
-				if(root == 1) break;
-				
-				for(int i=1; i<V+1; i++) {
-					if(graph[root][i] == 1) {
-						pq.add(i);
-					} 
-				}
-			}
-			
-			int max = 0;
+			int commonParent = findLCA(num1, num2, V);
+			int subTreeSize = countSubTree(commonParent);
+		}
+	}
+	
+	static int findLCA(int num1, int num2, int V) {
+		boolean[] visited = new boolean[V+1];
+		
+		while(num1 != 0) {
+			visited[num1] = true;
+			num1 = parent[num1];
+		}
+		
+		while(num2 != 0) {
+			if(visited[num2]) return num2;
 		}
 	}
 
