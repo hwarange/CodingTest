@@ -8,6 +8,8 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+
+//잔디 유지를 위한 주석
 public class SWEA_1248_공통조상 {	
 	
 	static List<Integer>[] children;
