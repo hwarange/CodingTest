@@ -9,6 +9,10 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 
+// 잔디유지용 주석
+// 내일 풀 예정
+// 빡세다 빡세
+
 public class SWEA_1248_공통조상 {	
 	
 	static List<Integer>[] children;
